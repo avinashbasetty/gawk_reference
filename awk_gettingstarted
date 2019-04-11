@@ -1,0 +1,66 @@
+To test whether gawk is installed, try below link
+awk 1 /dev/null
+In this case you should find a version of new awk, or install gawk
+
+Basic function of **awk** is to search files for lines that contains patterns . when line matches pattern awk performs specific action on that line.
+awk continues to process this way until it reaches end of line.
+
+AWK programs are data driven. AWK program contains series of rules. Each rule contains one pattern to search and one action to perform upon finding the pattern.
+
+syntactically, rule contains pattern followed by action.
+pattern { action }
+pattern { action }
+
+awk ’program’ input-file1 input-file2 ...
+
+There is a single quote character in program, so the shell wont interpret any awk character as special shell character. This also treat all program in single argument
+
+Running awk without input files:-
+awk 'program'
+
+ !#>awk 'BEGIN {print "Don\47t Panic!"}'
+ O/P: Don't Panic!
+ 
+ awk emulates cat utility, which copies every thing on keyboard to its standard output. press ctrl+d to exit
+awk '{print}'
+Now is the time for all good men
+Now is the time for all good men
+to come to the aid of their country.
+to come to the aid of their country.
+Four score and seven years ago,..
+Four score and seven years ago,..
+Whay, me worry?
+Whay, me worry?
+
+Running Long programs:
+Sometimes, programs will be long. In this cases, it is convinient to write in seperate file.
+awk -f sourcefile inputfile1 inputfile2
+
+The -f instructs the utility to get awk program from the file. 
+
+For example : 
+'BEGIN {print "Don\47t panic!"}
+
+save the file as advice. Then command will be awk -f advice
+
+you can also run file directly by using self contained script mechanism.
+
+#! /usr/bin/awk -f
+
+BEGIN {print "Don\47t Panic!"}
+
+Comment in awk:
+all comments start with number sign character (‘#’)
+
+Leading backslash are stripped first 
+ awk "BEGIN {print \"Don't panic\"}"
+
+This can be simplified
+awk "BEGIN {print \"Here is the single quote<'''>\" }"
+
+
+Magic Digits 
+47 - '
+42 - ""
+
+Another option will work nicely, but should comment clearly with escape mean
